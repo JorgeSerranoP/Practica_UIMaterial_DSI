@@ -1,41 +1,87 @@
-<table mat-table [dataSource]="datos" class="mat-elevation-z8" #tabla1>
-  <ng-container matColumnDef="Nombre">
-    <th mat-header-cell *matHeaderCellDef> Nombre </th>
-    <td mat-cell *matCellDef="let contacto"> {{contacto.nombre}} </td>
-  </ng-container>
+<body>
+  <div style="background-color: lightgray; padding: 10px;">
+    <button mat-button [matMenuTriggerFor]="menu">Menu</button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item>Item 1</button>
+      <button mat-menu-item>Item 2</button>
+    </mat-menu>
+    <h1>Directorio de contactos</h1>
+    <mat-icon aria-hidden="false" aria-label="Example home icon" id="iconoContactos" color="primary" matBadge="4"
+      matBadgeColor="warn">
+      contact_mail
+    </mat-icon>
+  </div>
+  <div>
+    <h2 style="text-align: center; padding-top: 10px;">Listado general</h2>
+    <table mat-table [dataSource]="datos" class="mat-elevation-z8" #tabla1 style="box-shadow: none;">
+      <ng-container matColumnDef="Nombre">
+        <th mat-header-cell *matHeaderCellDef> Nombre </th>
+        <td mat-cell *matCellDef="let contacto"> {{contacto.nombre}} </td>
+      </ng-container>
 
-  <ng-container matColumnDef="Telefono">
-    <th mat-header-cell *matHeaderCellDef> Telefono </th>
-    <td mat-cell *matCellDef="let contacto"> {{contacto.telefono}} </td>
-  </ng-container>
+      <ng-container matColumnDef="Telefono">
+        <th mat-header-cell *matHeaderCellDef> Telefono </th>
+        <td mat-cell *matCellDef="let contacto"> {{contacto.telefono}} </td>
+      </ng-container>
 
-  <ng-container matColumnDef="Email">
-    <th mat-header-cell *matHeaderCellDef> Email </th>
-    <td mat-cell *matCellDef="let contacto"> {{contacto.email}} </td>
-  </ng-container>
+      <ng-container matColumnDef="Email">
+        <th mat-header-cell *matHeaderCellDef> Email </th>
+        <td mat-cell *matCellDef="let contacto"> {{contacto.email}} </td>
+      </ng-container>
 
-  <ng-container matColumnDef="Tipo">
-    <th mat-header-cell *matHeaderCellDef> Tipo </th>
-    <td mat-cell *matCellDef="let contacto"> {{contacto.tipo}} </td>
-  </ng-container>
+      <ng-container matColumnDef="Tipo">
+        <th mat-header-cell *matHeaderCellDef> Tipo </th>
+        <td mat-cell *matCellDef="let contacto"> {{contacto.tipo}} </td>
+      </ng-container>
 
-  <ng-container matColumnDef="Habitual">
-    <th mat-header-cell *matHeaderCellDef> Habitual </th>
-    <td mat-cell *matCellDef="let contacto"> {{contacto.habitual}} </td>
-  </ng-container>
+      <ng-container matColumnDef="Habitual">
+        <th mat-header-cell *matHeaderCellDef> Habitual </th>
+        <td mat-cell *matCellDef="let contacto"> {{contacto.habitual}} </td>
+      </ng-container>
 
-  <ng-container matColumnDef="Acciones">
-    <th mat-header-cell *matHeaderCellDef> Acciones </th>
-    <td mat-cell *matCellDef="let j = index;">
-      <button mat-raised-button color="warn" focusable="false">
-        <mat-icon aria-hidden="false" aria-label="Example home icon">edit</mat-icon>
-      </button>
-      <button mat-raised-button color="warn" focusable="false" (click)="borrarFila(j)">
-        <mat-icon aria-hidden="false" aria-label="Example home icon">delete</mat-icon>
-      </button>
-    </td>
-  </ng-container>
+      <ng-container matColumnDef="Acciones">
+        <th mat-header-cell *matHeaderCellDef> Acciones </th>
+        <td mat-cell *matCellDef="let j = index;">
+          <button mat-raised-button focusable="false" style="box-shadow: none;">
+            <mat-icon aria-hidden="false" aria-label="Example home icon" color="primary">edit</mat-icon>
+          </button>
+          <button mat-raised-button focusable="false" style="box-shadow: none;" (click)="borrarFila(j)">
+            <mat-icon aria-hidden="false" aria-label="Example home icon" color="warn">delete</mat-icon>
+          </button>
+        </td>
+      </ng-container>
 
-  <tr mat-header-row *matHeaderRowDef="columnas"></tr>
-  <tr mat-row *matRowDef="let row; columns: columnas;"></tr>
-</table>
+      <tr mat-header-row *matHeaderRowDef="columnas"></tr>
+      <tr mat-row *matRowDef="let row; columns: columnas;"></tr>
+    </table>
+  </div>
+
+  <div class="contenedor">
+    <mat-form-field>
+      <input matInput [(ngModel)]="articuloselect.nombre" type="text" placeholder="Nombre">
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput [(ngModel)]="articuloselect.telefono" type="number" placeholder="Telefono">
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput [(ngModel)]="articuloselect.email" type="email" placeholder="Email">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Tipo</mat-label>
+      <mat-select [(value)]="selected">
+        <mat-option value="Trabajo">Trabajo</mat-option>
+        <mat-option value="Personal">Personal</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput [(ngModel)]="articuloselect.habitual" type="text" placeholder="Habitual">
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" (click)="agregar()">Agregar</button>
+
+  </div>
+</body>

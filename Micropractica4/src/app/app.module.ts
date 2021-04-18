@@ -9,6 +9,9 @@ import { FormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatSelectModule } from '@angular/material/select';
+import { MatBadgeModule } from '@angular/material/badge';
 import { ListaContactosComponent } from './lista-contactos/lista-contactos.component';
 
 @NgModule({
@@ -23,6 +26,9 @@ import { ListaContactosComponent } from './lista-contactos/lista-contactos.compo
     MatInputModule,
     MatButtonModule,
     MatIconModule,
+    MatMenuModule,
+    MatSelectModule,
+    MatBadgeModule,
     FormsModule
   ],
   providers: [],

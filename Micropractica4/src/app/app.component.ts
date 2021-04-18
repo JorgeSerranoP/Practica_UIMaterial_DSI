@@ -7,16 +7,18 @@ import { MatTable } from '@angular/material/table';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+  title = 'Micropractica4';
   columnas: string[] = ['Nombre', 'Telefono', 'Email', 'Tipo', 'Habitual', 'Acciones'];
 
   datos: Contacto[] =
-    [new Contacto('Ricardo Martín Manso', 609117799, 'ricardma@inf.uc3m.es', 'Trabajo', 'Si'),
-    new Contacto('Manolo el del Bombo', 609117799, 'ricardma@inf.uc3m.es', 'Personal', 'Si'),
-    new Contacto('María Lopez', 609117799, 'ricardma@inf.uc3m.es', 'Trabajo', 'Si'),
-    new Contacto('Clara de Juan Pastor', 609117799, 'ricardma@inf.uc3m.es', 'Personal', 'Si'),
+    [new Contacto('Ricardo Martín Manso', 609117799, 'ricardma@inf.uc3m.es', 'Trabajo', true),
+    new Contacto('Manolo el del Bombo', 609117799, 'ricardma@inf.uc3m.es', 'Personal', true),
+    new Contacto('María Lopez', 609117799, 'ricardma@inf.uc3m.es', 'Trabajo', true),
+    new Contacto('Clara de Juan Pastor', 609117799, 'ricardma@inf.uc3m.es', 'Personal', true),
     ];
 
-  articuloselect: Contacto = new Contacto("", 609117799, "", "", "");
+  articuloselect: Contacto = new Contacto("", 0, "", "", true);
+  selected = 'Personal';
 
   @ViewChild(MatTable) tabla1!: MatTable<Contacto>;
 
@@ -28,13 +30,13 @@ export class AppComponent {
   }
 
   agregar() {
-    this.datos.push(new Contacto(this.articuloselect.nombre, this.articuloselect.telefono, this.articuloselect.email, this.articuloselect.tipo, this.articuloselect.habitual));
+    this.datos.push(new Contacto(this.articuloselect.nombre, this.articuloselect.telefono, this.articuloselect.email, this.selected, this.articuloselect.habitual));
     this.tabla1.renderRows();
-    this.articuloselect = new Contacto("", 609117799, "", "", "");
+    this.articuloselect = new Contacto("", 609117799, "", "", true);
   }
 }
 
 export class Contacto {
-  constructor(public nombre: string, public telefono: number, public email: string, public tipo: string, public habitual: string) {
+  constructor(public nombre: string, public telefono: number, public email: string, public tipo: string, public habitual: boolean) {
   }
 }

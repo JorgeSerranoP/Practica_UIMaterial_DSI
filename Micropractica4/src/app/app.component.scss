@@ -1,6 +1,9 @@
+body{
+    margin: 20px;
+}
+
 table {
-    width: 90%;
-    margin:1rem auto;
+    width: 100%;
  }
 
  .contenedor {
@@ -11,3 +14,17 @@ table {
     box-shadow: -1px 3px 66px 0px rgba(0,0,0,0.75);
     padding: 1rem;
 }   
+
+h1{
+    float: right;
+    font-size: 40px;
+}
+
+button{
+    margin: 5px;
+}
+
+#iconoContactos{
+    margin: 10px;
+    float: right;
+}
