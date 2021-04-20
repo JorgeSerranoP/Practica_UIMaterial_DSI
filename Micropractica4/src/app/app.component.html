@@ -58,29 +58,50 @@
 
   <div class="contenedor">
     <h2 style="text-align: center; padding-top: 10px;"> Contacto</h2>
-    <mat-form-field>
-      <input matInput [(ngModel)]="articuloselect.nombre" type="text" placeholder="Nombre">
-    </mat-form-field>
+    <mat-accordion multi>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <b>Datos personales</b>
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <div class="panel">
+          <mat-form-field>
+            <input matInput [(ngModel)]="articuloselect.nombre" type="text" placeholder="Nombre">
+          </mat-form-field>
 
-    <mat-form-field>
-      <input matInput [(ngModel)]="articuloselect.telefono" type="number" placeholder="Telefono">
-    </mat-form-field>
+          <mat-form-field>
+            <input matInput [(ngModel)]="articuloselect.telefono" type="number" placeholder="Telefono">
+          </mat-form-field>
 
-    <mat-form-field>
-      <input matInput [(ngModel)]="articuloselect.email" type="email" placeholder="Email">
-    </mat-form-field>
+          <mat-form-field>
+            <input matInput [(ngModel)]="articuloselect.email" type="email" placeholder="Email">
+          </mat-form-field>
 
-    <mat-form-field appearance="fill">
-      <mat-label>Tipo</mat-label>
-      <mat-select [(value)]="selected">
-        <mat-option value="Trabajo">Trabajo</mat-option>
-        <mat-option value="Personal">Personal</mat-option>
-      </mat-select>
-    </mat-form-field>
+          <mat-form-field>
+            <mat-label>Tipo</mat-label>
+            <mat-select [(value)]="selected">
+              <mat-option value="Trabajo">Trabajo</mat-option>
+              <mat-option value="Personal">Personal</mat-option>
+            </mat-select>
+          </mat-form-field>
 
-    <mat-checkbox [(ngModel)]="checked">Habitual</mat-checkbox>
+          <mat-checkbox [(ngModel)]="checked" color="primary">Habitual</mat-checkbox>
+        </div>
+      </mat-expansion-panel>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <b>Otros datos</b>
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+      </mat-expansion-panel>
+    </mat-accordion>
 
-    <button mat-raised-button color="primary" (click)="agregar()">Agregar</button>
+    <div class="botones">
+      <button mat-raised-button class="botonFinal" color="primary" (click)="agregar()">Aceptar</button>
 
+      <button mat-raised-button class="botonFinal" color="primary">Cancelar</button>
+    </div>
   </div>
 </body>

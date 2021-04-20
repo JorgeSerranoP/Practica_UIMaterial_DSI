@@ -18,7 +18,7 @@ export class AppComponent {
     new Contacto('Clara de Juan Pastor', 609117799, 'ricardma@inf.uc3m.es', 'Personal', "No"),
     ];
 
-  articuloselect: Contacto = new Contacto("", 0, "", "", "");
+  articuloselect: Contacto = new Contacto("Manolo el del Bombo", 609117799, "ricardma@inf.uc3m.es", "", "");
   selected = 'Personal';
   checked = false;
 

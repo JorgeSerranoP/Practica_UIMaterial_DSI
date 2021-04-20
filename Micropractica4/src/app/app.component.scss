@@ -28,3 +28,14 @@ button{
     margin: 10px;
     float: right;
 }
+
+.panel{
+    display: flex;
+    flex-direction: column;
+}
+
+.botones{
+    margin: 30px;
+    display: flex;
+    justify-content: space-evenly;
+}
