@@ -12,6 +12,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatSelectModule } from '@angular/material/select';
 import { MatBadgeModule } from '@angular/material/badge';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatExpansionModule } from '@angular/material/expansion';
 import { ListaContactosComponent } from './lista-contactos/lista-contactos.component';
 
 @NgModule({
@@ -29,6 +31,8 @@ import { ListaContactosComponent } from './lista-contactos/lista-contactos.compo
     MatMenuModule,
     MatSelectModule,
     MatBadgeModule,
+    MatCheckboxModule,
+    MatExpansionModule,
     FormsModule
   ],
   providers: [],

@@ -57,6 +57,7 @@
   </div>
 
   <div class="contenedor">
+    <h2 style="text-align: center; padding-top: 10px;"> Contacto</h2>
     <mat-form-field>
       <input matInput [(ngModel)]="articuloselect.nombre" type="text" placeholder="Nombre">
     </mat-form-field>
@@ -77,9 +78,7 @@
       </mat-select>
     </mat-form-field>
 
-    <mat-form-field>
-      <input matInput [(ngModel)]="articuloselect.habitual" type="text" placeholder="Habitual">
-    </mat-form-field>
+    <mat-checkbox [(ngModel)]="checked">Habitual</mat-checkbox>
 
     <button mat-raised-button color="primary" (click)="agregar()">Agregar</button>
 
