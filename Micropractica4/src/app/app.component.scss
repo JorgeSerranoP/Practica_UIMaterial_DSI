@@ -39,3 +39,17 @@ button{
     display: flex;
     justify-content: space-evenly;
 }
+
+.filtro{
+    display: flex;
+    align-items: center;
+}
+
+.filter{
+    width: 500px;
+}
+
+.filter input{
+    width: 500px;
+    max-width: 500px;
+}

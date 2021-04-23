@@ -13,10 +13,14 @@
   </div>
   <div>
     <h2 style="text-align: center; padding-top: 10px;">Listado general</h2>
-    <mat-form-field>
-      <mat-label>Filter</mat-label>
-      <input matInput (keyup)="filtrar($event)" placeholder="Buscar nombre que empiezen por..." #input>
-    </mat-form-field>
+    <div class="filtro">
+      <mat-form-field class="filter">
+        <mat-label>Filter</mat-label>
+        <input matInput (keyup)="filtrarNombre($event)" placeholder="Buscar nombre que empiezen por..." #input>
+      </mat-form-field>
+      <mat-icon aria-hidden="false" aria-label="Example home icon" color="primary">search</mat-icon>
+    </div>
+
     <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" #tabla1 style="box-shadow: none;">
       <ng-container matColumnDef="Nombre">
         <th mat-header-cell *matHeaderCellDef> Nombre </th>
