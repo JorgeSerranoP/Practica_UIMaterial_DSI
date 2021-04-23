@@ -14,12 +14,10 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatExpansionModule } from '@angular/material/expansion';
-import { ListaContactosComponent } from './lista-contactos/lista-contactos.component';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    ListaContactosComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
