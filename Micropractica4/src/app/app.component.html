@@ -17,10 +17,17 @@
       <mat-form-field class="filter">
         <mat-label>Filter</mat-label>
         <input matInput (keyup)="filtrarNombre($event)" placeholder="Buscar nombre que empiezen por..." #input>
+        <mat-icon aria-hidden="false" aria-label="Example home icon" color="primary" style="float: right;">search
+        </mat-icon>
       </mat-form-field>
-      <mat-icon aria-hidden="false" aria-label="Example home icon" color="primary">search</mat-icon>
-    </div>
 
+      <mat-form-field>
+        <mat-label>Tipo</mat-label>
+        <mat-select [(value)]="filterSelect" (selectionChange)="filtrarTipo($event.value)">
+          <mat-option *ngFor="let tipo of tipo" [value]="tipo">{{tipo}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
     <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" #tabla1 style="box-shadow: none;">
       <ng-container matColumnDef="Nombre">
         <th mat-header-cell *matHeaderCellDef> Nombre </th>

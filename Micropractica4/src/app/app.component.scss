@@ -42,7 +42,9 @@ button{
 
 .filtro{
     display: flex;
+    flex-direction: row;
     align-items: center;
+    justify-content: space-between;
 }
 
 .filter{
@@ -50,6 +52,6 @@ button{
 }
 
 .filter input{
-    width: 500px;
-    max-width: 500px;
+    width: 460px;
+    max-width: 460px;
 }

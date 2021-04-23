@@ -9,13 +9,6 @@ import { MatTableDataSource } from '@angular/material/table';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-
-  ngOnInit() {
-    this.dataSource.filterPredicate = (data: Contacto, filter: string) => {
-      return data.nombre.toLowerCase().startsWith(filter);
-    };
-  }
-
   title = 'Micropractica4';
   columnas: string[] = ['Nombre', 'Telefono', 'Email', 'Tipo', 'Habitual', 'Acciones'];
 
@@ -29,6 +22,8 @@ export class AppComponent {
   dataSource = new MatTableDataSource(this.ELEMENT_DATA);
   articuloselect: Contacto = new Contacto("", "", "", "", "");
   selected = 'Personal';
+  filterSelect = '';
+  tipo = ["Personal", "Trabajo"];
   checked = false;
   public input: string = "";
 
@@ -64,6 +59,16 @@ export class AppComponent {
 
   filtrarNombre(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value.toLowerCase();
+    this.dataSource.filterPredicate = (data: Contacto, filter: string) => {
+      return data.nombre.toLowerCase().startsWith(filter);
+    };
+    this.dataSource.filter = filterValue;
+  }
+
+  filtrarTipo(filterValue: string) {
+    this.dataSource.filterPredicate = (data: Contacto, filter: string) => {
+      return data.tipo == filter;
+    };
     this.dataSource.filter = filterValue;
   }
 }
