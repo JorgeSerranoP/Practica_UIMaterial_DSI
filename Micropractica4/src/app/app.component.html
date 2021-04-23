@@ -13,7 +13,11 @@
   </div>
   <div>
     <h2 style="text-align: center; padding-top: 10px;">Listado general</h2>
-    <table mat-table [dataSource]="datos" class="mat-elevation-z8" #tabla1 style="box-shadow: none;">
+    <mat-form-field>
+      <mat-label>Filter</mat-label>
+      <input matInput (keyup)="filtrar($event)" placeholder="Buscar nombre que empiezen por..." #input>
+    </mat-form-field>
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" #tabla1 style="box-shadow: none;">
       <ng-container matColumnDef="Nombre">
         <th mat-header-cell *matHeaderCellDef> Nombre </th>
         <td mat-cell *matCellDef="let contacto"> {{contacto.nombre}} </td>
@@ -42,10 +46,10 @@
       <ng-container matColumnDef="Acciones">
         <th mat-header-cell *matHeaderCellDef> Acciones </th>
         <td mat-cell *matCellDef="let j = index;">
-          <button mat-raised-button focusable="false" style="box-shadow: none;">
+          <button mat-raised-button focusable="false" style="box-shadow: none;" (click)="editar(j)">
             <mat-icon aria-hidden="false" aria-label="Example home icon" color="primary">edit</mat-icon>
           </button>
-          <button mat-raised-button focusable="false" style="box-shadow: none;" (click)="borrarFila(j)">
+          <button mat-raised-button focusable="false" style="box-shadow: none;" (click)="borrar(j)">
             <mat-icon aria-hidden="false" aria-label="Example home icon" color="warn">delete</mat-icon>
           </button>
         </td>

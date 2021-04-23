@@ -1,6 +1,7 @@
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { Component, ViewChild } from '@angular/core';
 import { MatTable } from '@angular/material/table';
+import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
   selector: 'app-root',
@@ -11,22 +12,34 @@ export class AppComponent {
   title = 'Micropractica4';
   columnas: string[] = ['Nombre', 'Telefono', 'Email', 'Tipo', 'Habitual', 'Acciones'];
 
-  datos: Contacto[] =
-    [new Contacto('Ricardo Martín Manso', 609117799, 'ricardma@inf.uc3m.es', 'Trabajo', "Si"),
-    new Contacto('Manolo el del Bombo', 609117799, 'ricardma@inf.uc3m.es', 'Personal', "No"),
-    new Contacto('María Lopez', 609117799, 'ricardma@inf.uc3m.es', 'Trabajo', "Si"),
-    new Contacto('Clara de Juan Pastor', 609117799, 'ricardma@inf.uc3m.es', 'Personal', "No"),
+  ELEMENT_DATA: Contacto[] =
+    [new Contacto('Ricardo Martín Manso', "609117799", 'ricardma@inf.uc3m.es', 'Trabajo', "Si"),
+    new Contacto('Manolo el del Bombo', "609117799", 'ricardma@inf.uc3m.es', 'Personal', "No"),
+    new Contacto('María Lopez', "609117799", 'ricardma@inf.uc3m.es', 'Trabajo', "Si"),
+    new Contacto('Clara de Juan Pastor', "609117799", 'ricardma@inf.uc3m.es', 'Personal', "No"),
     ];
 
-  articuloselect: Contacto = new Contacto("Manolo el del Bombo", 609117799, "ricardma@inf.uc3m.es", "", "");
+  dataSource = new MatTableDataSource(this.ELEMENT_DATA);
+  articuloselect: Contacto = new Contacto("", "", "", "", "");
   selected = 'Personal';
   checked = false;
+  public input: string = "";
 
   @ViewChild(MatTable) tabla1!: MatTable<Contacto>;
 
-  borrarFila(cod: number) {
+  editar(cod: number) {
+    this.articuloselect = this.ELEMENT_DATA[cod];
+    this.selected = this.ELEMENT_DATA[cod].tipo;
+    if (this.ELEMENT_DATA[cod].habitual == "Si") {
+      this.checked = true;
+    } else {
+      this.checked = false;
+    }
+  }
+
+  borrar(cod: number) {
     if (confirm("Realmente quiere borrarlo?")) {
-      this.datos.splice(cod, 1);
+      this.ELEMENT_DATA.splice(cod, 1);
       this.tabla1.renderRows();
     }
   }
@@ -37,13 +50,18 @@ export class AppComponent {
     } else {
       this.articuloselect.habitual = "No"
     }
-    this.datos.push(new Contacto(this.articuloselect.nombre, this.articuloselect.telefono, this.articuloselect.email, this.selected, this.articuloselect.habitual));
+    this.ELEMENT_DATA.push(new Contacto(this.articuloselect.nombre, this.articuloselect.telefono, this.articuloselect.email, this.selected, this.articuloselect.habitual));
     this.tabla1.renderRows();
-    this.articuloselect = new Contacto("", 609117799, "", "", "");
+    this.articuloselect = new Contacto("", "", "", "", "");
+  }
+
+  filtrar(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 }
 
 export class Contacto {
-  constructor(public nombre: string, public telefono: number, public email: string, public tipo: string, public habitual: string) {
+  constructor(public nombre: string, public telefono: string, public email: string, public tipo: string, public habitual: string) {
   }
 }
