@@ -57,6 +57,12 @@ export class AppComponent {
     this.articuloselect = new Contacto("", "", "", "", "");
   }
 
+  cancelar() {
+    this.articuloselect = new Contacto("", "", "", "", "");
+    this.selected = 'Personal';
+    this.checked = false;
+  }
+
   filtrarNombre(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value.toLowerCase();
     this.dataSource.filterPredicate = (data: Contacto, filter: string) => {
